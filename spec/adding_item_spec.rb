@@ -5,17 +5,17 @@ feature 'Volunteer adds guest names to an item' do
 	scenario 'from the display page' do
 		expect(Item.count).to eq(0)
 		visit '/volunteer'
-		add_item('5', 'Sponsor A Child');
+		add_item('Sponsor A Child', '5');
 		expect(Item.count).to eq (1)
 		item = Item.first
-		expect(Item.total).to eq('5')
-		expect(Item.title).to eq('Sponsor A Child')
+		expect(item.title).to eq('Sponsor A Child')
+		expect(item.total).to eq('5')
 	end	
 
-	def add_item(total, title)
+	def add_item(title, total)
 		within('#new-item') do
-			fill_in 'total',with: total
 			select 'Sponsor A Child', :from => "title"
+			fill_in 'total',with: total
 			click_button 'Submit'
 		end
 	end	
