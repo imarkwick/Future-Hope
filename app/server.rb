@@ -2,6 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 
 require_relative './lib/item'
+require_relative './lib/table'
 require_relative 'data_mapper_setup'
 
 set :partial_template_engine, :erb
@@ -11,8 +12,11 @@ get '/' do
 	erb :index
 end
 
-get '/volunteer' do
+get '/admin' do
+	erb :admin
+end
 
+get '/volunteer' do
 	erb :volunteer
 end
 
