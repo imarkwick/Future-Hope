@@ -6,4 +6,6 @@ class Item
 	property :total,	String
 	property :title,	String
 
+	has n, :guests, through: Resource
+
 end
