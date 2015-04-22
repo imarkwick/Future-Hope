@@ -2,7 +2,10 @@
 
 <ul>
 <% @items.each do |item| %>
-	<li><%= item.title %>
-	<%= item.total %></li>
+	<li>
+	<%= item.title %>
+	<%= item.total %>
+	<%= item.names %>
+	</li>
 <% end %>
 </ul>

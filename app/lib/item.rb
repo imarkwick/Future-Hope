@@ -5,7 +5,6 @@ class Item
 	property :id, 		Serial
 	property :total,	String
 	property :title,	String
-
-	has n, :guests, through: Resource
+	property :names,	String
 
 end

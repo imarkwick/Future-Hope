@@ -25,10 +25,7 @@ end
 post '/display' do
 	title = params['title']
 	total = params['total']
-	guests = params['guests'].split(' ').map do |guest|
-		Guest.first_or_create(name: guest)
-	end
-	Item.create(title: title, total: total, guests: guests)
-	puts guests
+	names = params['names']
+	Item.create(title: title, total: total, names: names)
 	redirect to('/volunteer')
 end
