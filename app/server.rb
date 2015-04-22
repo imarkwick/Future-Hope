@@ -25,6 +25,13 @@ get '/display' do
 	erb :display
 end
 
+post '/volunteer' do
+	number = params['table-number']
+	guests = params['guestlist']
+	Table.create(tablenumber: number, guestlist: guests)
+	redirect to('/admin')
+end
+
 post '/display' do
 	title = params['title']
 	total = params['total']
