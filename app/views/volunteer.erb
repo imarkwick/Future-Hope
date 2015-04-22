@@ -19,8 +19,13 @@
 
 
 				Names of pledges given:
-				<br>
-
+				<select id="guest-list" size="10" multiple>
+			    <option value="1">One</option>
+			    <option value="2">Two</option>
+			    <option value="3">Three</option>
+			    <option value="4">Four</option>
+			    <option value="5">Five</option>
+			  </select>
 				
 				Total: <input type='text' name='total'>
 				<input type='submit' value='Submit'>
@@ -28,3 +33,32 @@
 		</div>
 	</div>
 </div>
+<script>
+(function() {
+      var selected = {};
+      $('#guest-list').click(function(e) {
+        var $this = $(this),
+            options = this.options,
+            option,
+            value,
+            n;
+        
+        // Find out what option was just added
+        value = $this.val();
+        
+        // Re-apply the selections
+        for (n = 0; n < options.length; ++n) {
+          option = options[n];
+          if (option.value == value) {
+            // The one being updated
+            selected[value] = !selected[value];
+          }
+
+          // One of the others
+          option.selected = !!selected[option.value];
+        }
+        
+        return false;
+      });
+    })();
+  </script>
