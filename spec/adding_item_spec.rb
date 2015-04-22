@@ -14,20 +14,19 @@ feature 'Volunteer adds guest names to an item' do
 
 	scenario 'with some guest names' do
 		visit '/volunteer'
-		add_item('Sponsor A Child', '5', %w(Peter Izzy));
+		add_item('Sponsor A Child', '5', %w(Peter, Izzy));
 		item = Item.first
-		expect(item.guests).to include('Peter')
-		expect(item.guests).to include('Izzy')
+		guest = Guest.first
+		expect(guest.name).to include('Peter')
+		expect(guest.name).to include('Izzy')
 	end
 
 	def add_item(title, total, guests = [])
 		within('#new-item') do
 			select 'Sponsor A Child', :from => "title"
+			select 'Peter', :from => "guests"
+			select 'Izzy', :from => "guests"
 			fill_in 'total', with: total
-			choose('Peter')
-			choose('Izzy')
-			# guests << 'Peter'
-			# guests << 'Izzy'
 			# guests.join(' ')
 			click_button 'Submit'
 		end
