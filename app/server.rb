@@ -19,13 +19,15 @@ get '/admin' do
 end
 
 get '/volunteer' do
+	@number = session[:mytable]
 	@table = Table.all
+	puts @number
 	erb :volunteer
 end
 
 post '/volunteer' do
-	number = params['tablenumber']
-	redirect '/volunteer/' + number
+	session[:mytable] = params['tablenumber']
+	redirect '/volunteer'
 end
 
 post '/volunteer' do
