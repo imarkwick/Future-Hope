@@ -1,1 +1,23 @@
-<h1>Volunteer </h1>
+<div class="row">
+	<div class="small-12 columns">
+		<h1>Volunteer </h1>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns">
+		<div id="new-item">
+			<form action='/display' method='post'>
+				Auction Item: 
+				<select name='auctionItem'>
+				  <option value="sponsor-a-child">Sponsor A Child</option>
+				  <option value="teacher">Teacher</option>
+				  <option value="university">3-yr University Place</option>
+				  <option value="home">Home For A Child</option>
+				  <option value="activities">Activities</option>
+				</select>
+				Total: <input type='text' name='total'>
+				<input type='submit' value='Submit'>
+			</form>
+		</div>
+	</div>
+</div>
