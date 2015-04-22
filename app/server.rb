@@ -17,6 +17,6 @@ get '/volunteer' do
 end
 
 get '/display' do
-
+	@items = Item.all
 	erb :display
 end
