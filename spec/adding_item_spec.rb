@@ -15,7 +15,7 @@ feature 'Volunteer adds guest names to an item' do
 	def add_item(total, title)
 		within('#new-item') do
 			fill_in 'total',with: total
-			select 'Sponsor A Child', :from => "auctionItem"
+			select 'Sponsor A Child', :from => "title"
 			click_button 'Submit'
 		end
 	end	
