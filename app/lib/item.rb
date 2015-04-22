@@ -4,5 +4,6 @@ class Item
 
 	property :id, 		Serial
 	property :total,	String
+	property :title,	String
 
 end
