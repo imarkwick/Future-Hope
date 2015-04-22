@@ -2,7 +2,6 @@ require 'sinatra'
 require 'data_mapper'
 
 require_relative './lib/item'
-require_relative './lib/guest'
 require_relative 'data_mapper_setup'
 
 set :partial_template_engine, :erb

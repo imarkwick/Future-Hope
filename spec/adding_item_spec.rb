@@ -5,7 +5,7 @@ feature 'Volunteer adds guest names to an item' do
 	scenario 'from the display page' do
 		expect(Item.count).to eq(0)
 		visit '/volunteer'
-		add_item('Sponsor A Child', '5');
+		add_item('Sponsor A Child', '5', 'Peter');
 		expect(Item.count).to eq (1)
 		item = Item.first
 		expect(item.title).to eq('Sponsor A Child')
@@ -14,20 +14,18 @@ feature 'Volunteer adds guest names to an item' do
 
 	scenario 'with some guest names' do
 		visit '/volunteer'
-		add_item('Sponsor A Child', '5', %w(Peter, Izzy));
+		add_item('Sponsor A Child', '5', ["Peter", "Izzy"]);
 		item = Item.first
-		guest = Guest.first
-		expect(guest.name).to include('Peter')
-		expect(guest.name).to include('Izzy')
+		expect(item.names).to include('Peter')
+		expect(item.names).to include('Izzy')
 	end
 
-	def add_item(title, total, guests = [])
+	def add_item(title, total, names)
 		within('#new-item') do
 			select 'Sponsor A Child', :from => "title"
-			select 'Peter', :from => "guests"
-			select 'Izzy', :from => "guests"
+			select 'Peter', :from => "names[]"
+			select 'Izzy', :from => "names[]"
 			fill_in 'total', with: total
-			# guests.join(' ')
 			click_button 'Submit'
 		end
 	end	
