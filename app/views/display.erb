@@ -1,11 +1,18 @@
-<h1>Display</h1>
-
-<ul>
-<% @items.each do |item| %>
-	<li>
-	<%= item.title %>
-	<%= item.total %>
-	<%= item.names %>
-	</li>
-<% end %>
-</ul>
+<div class="row">
+	<div class="small-12 columns">
+		<h1>Display</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns">
+		<ul>
+		<% @items.each do |item| %>
+			<li>
+			<%= item.title %>
+			<%= item.total %>
+			<%= item.names %>
+			</li>
+		<% end %>
+		</ul>
+	</div>
+</div>

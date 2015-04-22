@@ -15,8 +15,6 @@
 				  <option value="Home For A Child">Home For A Child</option>
 				  <option value="Activities">Activities</option>
 				</select>
-
-
 				Names of pledges given:
 				<select id="guest-list" name="names[]" size="10" multiple>
 			    <option value="Peter">Peter</option>
@@ -24,8 +22,7 @@
 			    <option value="Clare">Clare</option>
 			    <option value="Jack">Four</option>
 			    <option value="Mishal">Five</option>
-			  </select>
-				
+			  </select>	
 				Total: <input type='text' name='total'>
 				<input type='submit' value='Submit'>
 			</form>
@@ -34,30 +31,26 @@
 </div>
 <script>
 (function() {
-      var selected = {};
-      $('#guest-list').click(function(e) {
-        var $this = $(this),
-            options = this.options,
-            option,
-            value,
-            n;
-        
-        // Find out what option was just added
-        value = $this.val();
-        
-        // Re-apply the selections
-        for (n = 0; n < options.length; ++n) {
-          option = options[n];
-          if (option.value == value) {
-            // The one being updated
-            selected[value] = !selected[value];
-          }
-
-          // One of the others
-          option.selected = !!selected[option.value];
-        }
-        
-        return false;
-      });
-    })();
-  </script>
+  var selected = {};
+  $('#guest-list').click(function(e) {
+    var $this = $(this),
+      options = this.options,
+      option,
+      value,
+      n;  
+      // Find out what option was just added
+      value = $this.val();    
+      // Re-apply the selections
+      for (n = 0; n < options.length; ++n) {
+        option = options[n];
+        if (option.value == value) {
+          // The one being updated
+          selected[value] = !selected[value];
+         }
+        // One of the others
+        option.selected = !!selected[option.value];
+      }
+      return false;
+    });
+  })();
+</script>
