@@ -20,8 +20,8 @@ end
 
 post '/admin' do
 	number = params['table-number']
-	guests = params['guestlist']
-	Table.create(tablenumber: number, guestlist: guests)
+	guests = params['guestlist'].split(',')
+	guests.each { |guest| Table.first_or_create(tablenumber: number, guestlist: guest) }
 	redirect to('/admin')
 end
 
@@ -32,10 +32,11 @@ end
 get '/volunteer' do
 	@number = session[:mytable]
 	@tables = Table.all
+	@all_table_names = []
 	if @number 
-		@table = Table.first(:tablenumber => @number)
-		if @table.guestlist
-			@guestlist = (@table.guestlist).split(",")
+		@table = Table.all(:tablenumber => @number)
+		if @table.first(:tablenumber => @number).guestlist
+			@table.each { |table| @all_table_names << table.guestlist }
 		end
 	end
 	erb :volunteer

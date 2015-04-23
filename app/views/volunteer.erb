@@ -23,8 +23,8 @@
 				</select>
 				Names of pledges given:
 				<select id="guest-list" name="names[]" size="10" multiple>
-					<% if @guestlist %>
-						<% @guestlist.each do |guest| %>
+					<% if @all_table_names %>
+						<% @all_table_names.each do |guest| %>
 					    <option value="<%= guest %>"><%= guest %></option>
 					  <% end %>
 				  <% end %>
