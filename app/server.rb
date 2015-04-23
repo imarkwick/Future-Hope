@@ -25,7 +25,7 @@ post '/admin' do
 	redirect to('/admin')
 end
 
-get '/volunteer/table' do
+get '/volunteer-table' do
 	erb :volunteertable
 end
 
