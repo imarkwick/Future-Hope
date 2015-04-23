@@ -25,9 +25,6 @@ get '/volunteer' do
 		@table = Table.first(:tablenumber => @number)
 		if @table.guestlist
 			@guestlist = (@table.guestlist).split(",")
-			# @guestlist.split(",")
-			# @guestlist
-			puts @guestlist.is_a?(Array)
 		end
 	end
 	erb :volunteer
