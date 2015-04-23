@@ -48,6 +48,8 @@ end
 
 get '/display' do
 	@items = Item.all
+	@total = (@items[0].names).split(",").length
+	@totalitems = @items * @total
 	erb :display
 end
 
