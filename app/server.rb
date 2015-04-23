@@ -21,7 +21,9 @@ end
 get '/volunteer' do
 	@number = session[:mytable]
 	@table = Table.all
-	puts @number
+	@guests = Table.first(:tablenumber => @number)
+	@guestlist = @guests.guestlist
+	puts @guestlist
 	erb :volunteer
 end
 
@@ -30,7 +32,7 @@ post '/volunteer' do
 	redirect '/volunteer'
 end
 
-post '/volunteer' do
+post '/admin' do
 	number = params['table-number']
 	guests = params['guestlist']
 	Table.create(tablenumber: number, guestlist: guests)
