@@ -18,6 +18,17 @@ get '/admin' do
 	erb :admin
 end
 
+post '/admin' do
+	number = params['table-number']
+	guests = params['guestlist']
+	Table.create(tablenumber: number, guestlist: guests)
+	redirect to('/admin')
+end
+
+get '/volunteer/table' do
+	erb :volunteertable
+end
+
 get '/volunteer' do
 	@number = session[:mytable]
 	@tables = Table.all
@@ -35,17 +46,6 @@ post '/volunteer' do
 	redirect '/volunteer'
 end
 
-post '/admin' do
-	number = params['table-number']
-	guests = params['guestlist']
-	Table.create(tablenumber: number, guestlist: guests)
-	redirect to('/admin')
-end
-
-get '/volunteer/table' do
-	erb :volunteertable
-end
-
 get '/display' do
 	@items = Item.all
 	erb :display
@@ -58,6 +58,4 @@ post '/display' do
 	Item.create(title: title, total: total, names: names)
 	redirect to('/volunteer')
 end
-
-
 
