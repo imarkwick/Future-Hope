@@ -6,13 +6,23 @@
 <div class="row">
 	<div class="small-12 columns">
 		<ul>
-		<% @items.each do |item| %>
-			<li>
-				<img src="images/<%= item.title %>">
-			<%= item.total %>
-			<%= item.names %>
-			</li>
-		<% end %>
+			<% @items.each do |item| %>
+				<li>
+					<img src="images/<%= item.title %>">
+					<%= item.total %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<div class="row">
+	<div class="small-12 columns">
+		<ul>
+			<% @items.each do |item| %>
+				<li>
+					<%= item.names %>
+				</li>
+			<% end %>
 		</ul>
 	</div>
 </div>
