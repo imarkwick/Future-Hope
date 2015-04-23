@@ -16,13 +16,20 @@
 				  <option value="Activities">Activities</option>
 				</select>
 				Names of pledges given:
+				<% if @guestlist %><% @guestlist.each do |guest| %>
 				<select id="guest-list" name="names[]" size="10" multiple>
-			    <option value="Peter">Peter</option>
+
+			    <option value="<%= guest %>"><%= guest %></option>
+			    <option value="<%= guest %>"><%= guest %></option>
+
 			    <option value="Izzy">Izzy</option>
 			    <option value="Clare">Clare</option>
 			    <option value="Jack">Four</option>
 			    <option value="Mishal">Five</option>
 			  </select>	
+			  <% end %>
+			  <% end %>
+
 				Total: <input type='text' name='total'>
 				<input type='submit' value='Submit'>
 			</form>
