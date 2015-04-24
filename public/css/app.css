@@ -4,7 +4,7 @@
 }
 
 img#logostart{
-	height: 90px;
+	height: 70px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -17,14 +17,16 @@ h1#volunteerheader{
 	margin-right: auto;
 	display: table;
 	margin-top: 0px;
-	font-family: 'TheLastSomethingThatMeantAnything';
+	font-size: 60px;
+	font-family: 'Love Ya Like A Sister', cursive;;
 
 }
 h2#welcome{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	font-family: 'TheLastSomethingThatMeantAnything';
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: 50px;
 }
 img#logo {
   height: 50px;
@@ -39,6 +41,9 @@ select#selecttable{
   margin-right: auto;
   display: block;
 }
+form#auction-list {
+	color: #7c2529;
+}
 
 button#reselect {
 	font-family: 'Roboto', sans-serif;
@@ -46,7 +51,7 @@ button#reselect {
 	margin-right: auto;
 	display: block;
 	margin-top: 80px;
-	font-size: 15px;
+	font-size: 50px;
 	border: 1px solid red;
 	background-color: white;
 	color: black;
@@ -56,11 +61,15 @@ button#reselect:hover {
 	font-color:white;
 }
 
+#auction-list {
+	font-size: 50px;
+}
+
 input#submit {
 	width: 70%;
-	height:50px;
+	height:90px;
 	background-color: #de5958;
-	font-size: 20px;
+	font-size: 50px;
 	margin-left: auto;
   margin-right: auto;
   display: block;
@@ -70,7 +79,20 @@ input#submit:hover{
 	opacity: .9	;
 }
 
+/*option {
+	font-size: 40px;
+	padding-top: 5px;
+}*/
+
+select{
+	font-size: 40px;
+	min-height: 70px;
+}
+option#options-list {
+	font-size: 40px;
+}
+
 li {
 	list-style-type: none;
-	font-size: 20px;
+	font-size: 50px;
 }
