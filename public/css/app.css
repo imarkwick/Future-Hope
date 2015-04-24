@@ -86,18 +86,14 @@ input#submit:hover{
 }
 
 select{
-	font-size: 40px;
-	min-height: 70px;
+	margin-bottom: 100px;
+	font-size: 100px;
+	min-height: 150px;
 }
-option#options-list {
-	font-size: 40px;
-	width: 300px;
+option {
+	font-size: 100px;
 }
 
-option#guest {
-	width:70%;
-	font-size: 300px;
-}
 
 li {
 	list-style-type: none;
