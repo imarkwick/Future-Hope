@@ -4,23 +4,22 @@
 }
 
 img#logostart{
-	height: 70px;
+	height: 15%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
-  margin-bottom: 50px
+  margin-top: 10%;
 }
 
 h1#volunteerheader{
 	margin-left: auto;
 	margin-right: auto;
 	display: table;
-	margin-top: 0px;
+	margin-top: 30%;
 	font-size: 60px;
 	font-family: 'Love Ya Like A Sister', cursive;;
-
 }
+
 h2#welcome{
 	margin-left: auto;
 	margin-right: auto;
@@ -29,14 +28,14 @@ h2#welcome{
 	font-size: 50px;
 }
 img#logo {
-  height: 50px;
+  height: 15%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 5px;
+  padding-top: 10%;
  }
 select#selecttable{
-	width: 59px;
+	width: 70%;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -50,7 +49,7 @@ button#reselect {
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
-	margin-top: 80px;
+	margin-top: 85%;
 	font-size: 50px;
 	border: 1px solid red;
 	background-color: white;
@@ -67,7 +66,7 @@ button#reselect:hover {
 
 input#submit {
 	width: 70%;
-	height:90px;
+	height:70%;
 	background-color: #de5958;
 	font-size: 50px;
 	margin-left: auto;
