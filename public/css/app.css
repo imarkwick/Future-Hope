@@ -8,23 +8,23 @@ img#logostart{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
-  margin-bottom: 100px
+  margin-top: 50px;
+  margin-bottom: 50px
 }
 
 h1#volunteerheader{
 	margin-left: auto;
 	margin-right: auto;
 	display: table;
-	margin-top: 50px;
-	font-family: 'Love Ya Like A Sister', cursive;
+	margin-top: 0px;
+	font-family: 'TheLastSomethingThatMeantAnything';
 
 }
 h2#welcome{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	font-family: 'Love Ya Like A Sister', cursive;
+	font-family: 'TheLastSomethingThatMeantAnything';
 }
 img#logo {
   height: 50px;
@@ -41,28 +41,33 @@ select#selecttable{
 }
 
 button#reselect {
-	margin-top: 20px;
-	background-color: black;
-	font-color:white;
+	font-family: 'Roboto', sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-top: 80px;
+	font-size: 15px;
 	border: 1px solid red;
-}
-button#reselect:hover {
 	background-color: white;
 	color: black;
+}
+button#reselect:hover {
+	background-color: #7c2529;
+	font-color:white;
 }
 
 input#submit {
 	width: 70%;
-	height:70px;
+	height:50px;
 	background-color: #de5958;
-	opacity: .9	;
 	font-size: 20px;
 	margin-left: auto;
   margin-right: auto;
   display: block;
 }
 input#submit:hover{
-	background-color: green;
+	background-color: #d22630;
+	opacity: .9	;
 }
 
 li {
