@@ -91,6 +91,12 @@ select{
 }
 option#options-list {
 	font-size: 40px;
+	width: 70%;
+}
+
+option#guest {
+	width:70%;
+	font-size: 40px;
 }
 
 li {
