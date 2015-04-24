@@ -17,7 +17,7 @@ h2#welcome{
 	text-align: center;
 	font-family: 'Love Ya Like A Sister', cursive;
 	font-size: 60px;
-	margin-top: 50%;
+	margin-top: 40%;
 	margin-bottom: 50px;
 }
 h1#volunteerheader{
@@ -68,7 +68,7 @@ button#reselect:hover {
 
 input#submit {
 	width: 70%;
-	height:300px;
+	height:200px;
 	background-color: #de5958;
 	font-size: 50px;
 	margin-top: 200px;
