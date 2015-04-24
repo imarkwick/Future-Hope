@@ -4,13 +4,21 @@
 }
 
 img#logostart{
-	height: 20px;
+	height: 50px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+  margin-top: 10px;
 }
 
+h2#welcome{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: 60px;
+	margin-top: 50%;
+}
 h1#volunteerheader{
 	margin-left: auto;
 	margin-right: auto;
@@ -20,13 +28,6 @@ h1#volunteerheader{
 	font-family: 'Love Ya Like A Sister', cursive;;
 }
 
-h2#welcome{
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	font-family: 'Love Ya Like A Sister', cursive;
-	font-size: 60px;
-}
 img#logo {
   height: 20px;
   display: block;
