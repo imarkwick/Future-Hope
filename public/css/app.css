@@ -4,7 +4,7 @@
 }
 
 img#logostart{
-	height: 15%;
+	height: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -25,10 +25,10 @@ h2#welcome{
 	margin-right: auto;
 	text-align: center;
 	font-family: 'Love Ya Like A Sister', cursive;
-	font-size: 50px;
+	font-size: 60px;
 }
 img#logo {
-  height: 15%;
+  height: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -50,7 +50,7 @@ button#reselect {
 	margin-right: auto;
 	display: block;
 	margin-top: 85%;
-	font-size: 50px;
+	font-size: 60px;
 	border: 1px solid red;
 	background-color: white;
 	color: black;
@@ -61,7 +61,7 @@ button#reselect:hover {
 }
 
 #auction-list {
-	font-size: 50px;
+	font-size: 60px;
 }
 
 input#submit {
@@ -77,11 +77,6 @@ input#submit:hover{
 	background-color: #d22630;
 	opacity: .9	;
 }
-
-/*option {
-	font-size: 40px;
-	padding-top: 5px;
-}*/
 
 select{
 	font-size: 40px;

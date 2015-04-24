@@ -12,8 +12,9 @@
 	<div class="small-12 columns">
 		<div id="new-item">
 			<form action='/display' id='auction-list' method='post'>
-				Auction Item: 
+			
 				<select name="title">
+					<option class="options-list">Auction Item</option>
 				  <option class="options-list" value="rugby.png">Rugby Program (1 available)</option>
 				  <option value="cricket.png">Cricket Program (1 available)</option>
 				  <option value="rowing.png">Rowing Program (1 available)</option>
@@ -26,7 +27,6 @@
 				  <option value="teacher-month.png">Teacher (1 month)</option>
 				  <option value="child-month.png">Child Off The Streets (1 month)</option>
 				</select>
-				Names of pledges given:
 				<select id="guest-list" name="names[]" size="10" multiple>
 					<% if @all_table_names %>
 						<% @all_table_names.each do |guest| %>
