@@ -54,7 +54,7 @@ get '/display' do
 	list = total_items.join('')
 	@array = list.split(',')
 	@array.delete(@array.last)
-
+	@array.each { |image| image[0] = '' if image[0] == ' ' }
 	erb :display
 end
 
