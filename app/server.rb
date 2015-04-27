@@ -51,8 +51,9 @@ get '/display' do
 	@items = Item.all
 	items_and_totals = images_per_item(@items)
 	total_items = total_images(items_and_totals)
-
-	print total_items.join(',')
+	list = total_items.join('')
+	@array = list.split(',')
+	@array.delete(@array.last)
 
 	erb :display
 end
