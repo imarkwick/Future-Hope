@@ -51,6 +51,13 @@ get '/display' do
 	@items = Item.all
 	@total = (@items[0].names).split(",").length
 	@totalitems = @items * @total
+
+	puts @items[0]
+	puts '---------------'
+	puts @total[1]
+	puts '==============='
+	puts @tota
+
 	erb :display
 end
 
