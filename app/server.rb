@@ -3,6 +3,7 @@ require 'data_mapper'
 
 require_relative './lib/item'
 require_relative './lib/table'
+require_relative './helper_methods/helper'
 require_relative 'data_mapper_setup'
 
 enable :sessions
@@ -20,7 +21,7 @@ end
 
 post '/admin' do
 	number = params['table-number']
-	guests = params['guestlist'].split(',')
+	guests = params['guestlist'].split(', ')
 	guests.each { |guest| Table.first_or_create(tablenumber: number, guestlist: guest) }
 	redirect to('/admin')
 end
@@ -32,11 +33,10 @@ end
 get '/volunteer' do
 	@number = session[:mytable]
 	@tables = Table.all
-	@all_table_names = []
 	if @number 
 		@table = Table.all(:tablenumber => @number)
 		if @table.first(:tablenumber => @number).guestlist
-			@table.each { |table| @all_table_names << table.guestlist }
+			@all_table_names = table_guestlist(@table)
 		end
 	end
 	erb :volunteer
@@ -49,8 +49,12 @@ end
 
 get '/display' do
 	@items = Item.all
-	@total = (@items[0].names).split(",").length
-	@totalitems = @items * @total
+	items_and_totals = images_per_item(@items)
+	total_items = total_images(items_and_totals)
+	list = total_items.join('')
+	@array = list.split(',')
+	@array.delete(@array.last)
+	@array.each { |image| image[0] = '' if image[0] == ' ' }
 	erb :display
 end
 
