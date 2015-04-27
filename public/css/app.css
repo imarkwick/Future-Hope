@@ -4,68 +4,96 @@
 }
 
 img#logostart{
-	height: 90px;
+	height: 200px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
-  margin-bottom: 100px
 }
 
-h1#volunteerheader{
-	margin-left: auto;
-	margin-right: auto;
-	display: table;
-	margin-top: 50px;
-	font-family: 'Love Ya Like A Sister', cursive;
-
-}
 h2#welcome{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: 60px;
+	margin-top: 30%;
+	margin-bottom: 50px;
 }
 img#logo {
-  height: 50px;
+  height: 200px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 5px;
+  margin-top: 100px;
  }
+
+h1#volunteerheader{
+	margin-left: auto;
+	margin-right: auto;
+	display: table;
+	margin-top: 30%;
+	margin-bottom: 50px;
+	font-size: 60px;
+	font-family: 'Love Ya Like A Sister', cursive;;
+}
+
 select#selecttable{
-	width: 59px;
+	width: 70%;
+	height: 200px;
+	margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+form#auction-list {
+	color: #7c2529;
 }
 
 button#reselect {
-	margin-top: 20px;
-	background-color: black;
-	font-color:white;
+	font-family: 'Roboto', sans-serif;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-top: 50px;
+	font-size: 60px;
 	border: 1px solid red;
-}
-button#reselect:hover {
 	background-color: white;
 	color: black;
+}
+button#reselect:hover {
+	background-color: #7c2529;
+	font-color:white;
+}
+
+#auction-list {
+	font-size: 60px;
 }
 
 input#submit {
 	width: 70%;
-	height:70px;
+	height:200px;
 	background-color: #de5958;
-	opacity: .9	;
-	font-size: 20px;
+	font-size: 50px;
+	margin-top: 200px;
 	margin-left: auto;
   margin-right: auto;
   display: block;
 }
 input#submit:hover{
-	background-color: green;
+	background-color: #d22630;
+	opacity: .9	;
+}
+
+select{
+	font-size: 40px;
+	min-height: 70px;
+}
+option#options-list {
+	font-size: 40px;
 }
 
 li {
 	list-style-type: none;
-	font-size: 20px;
+	font-size: 50px;
 }
