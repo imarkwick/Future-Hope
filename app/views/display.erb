@@ -6,13 +6,15 @@
 <div class="row">
 	<div class="small-12 columns">
 		<ul>
-			<% if @totalitems %>
-				<% @totalitems.each do |item| %>
+
+			<% if @items_and_totals %>
+				<% @items_and_totals.each do |item, total| %>
 					<li>
 						<img src="images/<%= item.title %>">
 					</li>
 				<% end %>
 			<% end %>
+
 		</ul>
 	</div>
 </div>

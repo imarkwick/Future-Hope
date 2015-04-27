@@ -49,14 +49,10 @@ end
 
 get '/display' do
 	@items = Item.all
-	@total = (@items[0].names).split(",").length
-	@totalitems = @items * @total
+	items_and_totals = images_per_item(@items)
+	total_items = total_images(items_and_totals)
 
-	puts @items[0]
-	puts '---------------'
-	puts @total[1]
-	puts '==============='
-	puts @tota
+	print total_items.join(',')
 
 	erb :display
 end
