@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'data_mapper'
+require 'faye/websocket'
 
+Faye::WebSocket.load_adapter('thin')
 require_relative './lib/item'
 require_relative './lib/table'
 require_relative './helper_methods/helper'
@@ -49,13 +51,32 @@ end
 
 get '/display' do
 	@items = Item.all
-	items_and_totals = images_per_item(@items)
-	total_items = total_images(items_and_totals)
-	list = total_items.join('')
-	@array = list.split(',')
-	@array.delete(@array.last)
-	@array.each { |image| image[0] = '' if image[0] == ' ' }
-	erb :display
+	# items_and_totals = images_per_item(@items)
+	# total_items = total_images(items_and_totals)
+	# list = total_items.join('')
+	# @array = list.split(',')
+	# @array.delete(@array.last)
+	# @array.each { |image| image[0] = '' if image[0] == ' ' }
+
+	if Faye::WebSocket.websocket?(request.env)
+		ws = Faye::WebSocket.new(request.env)
+
+		ws.on(:open) do |event|
+			puts 'On Open'
+		end
+
+		ws.on(:message) do |msg|
+			ws.send(msg.data)
+		end
+
+		ws.on(:close) do |event|
+			puts 'On Close'
+		end
+
+		ws.rack_response
+	else
+		erb :display
+	end
 end
 
 post '/display' do
