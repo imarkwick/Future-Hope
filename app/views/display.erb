@@ -3,29 +3,15 @@
 		<h1>Display</h1>
 	</div>
 </div>
+
+<input type="text" id="input" />
+
 <div class="row">
 	<div class="small-12 columns">
-		<ul>
-			<% if @array %>
-				<% @array.each do |image| %>
-					<li>
-						<img src="images/<%= image %>">
-					</li>
-				<% end %>
-			<% end %>
+		<ul id="messages">
+
 		</ul>
 	</div>
 </div>
-<div class="row">
-	<div class="small-12 columns">
-		<ul>
-			<% if @items %>
-				<% @items.each do |item| %>
-					<li>
-						<%= item.names %>
-					</li>
-				<% end %>
-			<% end %>
-		</ul>
-	</div>
-</div>r
+
+

@@ -8,6 +8,7 @@
 		<h1 id="volunteerheader">Table <% if @number %><%= @number %><% end %></h1>
 	</div>
 </div>
+
 <div class="row">
 	<div class="small-12 columns">
 		<div id="new-item">
@@ -34,13 +35,10 @@
 					  <% end %>
 				  <% end %>
 			  </select>	
-<!-- 				Total: <input type='text' name='total'>
- -->				<input type='submit' id="submit" value='SUBMIT'>
+					<input type='submit' id="submit" value='SUBMIT'>
 			</form>
 				
-			<form method="link" action="/volunteer-table">
-			<button type="submit" value="reselect" id="reselect">Reselect Table</input>
-		</form>
+			<button type="submit" action="/volunteer-table" value="reselect" id="reselect">Reselect Table</button>
 		</div>
 	</div>
 </div>
