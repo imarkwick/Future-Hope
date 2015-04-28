@@ -13,27 +13,6 @@ set :session_secret, 'super secret'
 set :partial_template_engine, :erb
 set :public_dir, Proc.new { File.join(root, "..", "public") }
 
-# def websocket_connection
-# 	Faye::WebSocket.websocket?(request.env)
-# 	ws = Faye::WebSocket.new(request.env)
-
-# 	ws.on(:open) do |event|
-# 		puts 'On Open'
-# 	end
-
-# 	ws.on(:message) do |msg|
-# 		puts "!!!!!!!!!!!!"
-# 		ws.send(msg.data)
-# 		puts msg.data
-# 	end
-
-# 	ws.on(:close) do |event|
-# 		puts 'On Close'
-# 	end
-
-# 	ws.rack_response
-# end
-
 get '/' do 
 	erb :index
 end
@@ -53,6 +32,11 @@ get '/volunteer-table' do
 	erb :volunteertable
 end
 
+def getSocket
+	@@ws ||= Faye::WebSocket.new(request.env)
+	@@ws
+end
+
 get '/volunteer' do
 	@number = session[:mytable]
 	@tables = Table.all
@@ -62,18 +46,21 @@ get '/volunteer' do
 			@all_table_names = table_guestlist(@table)
 		end
 	end
+	# p request.env
 
-	if Faye::WebSocket.websocket?(request.env)
-		ws = Faye::WebSocket.new(request.env)
+	if (Faye::WebSocket.websocket?(request.env))
+
+		puts "----"
+
+		ws = getSocket
 
 		ws.on(:open) do |event|
-			puts 'On Open'
+			puts 'Volunteer: On Open'
 		end
 
 		ws.on(:message) do |msg|
-			puts "!!!!!!!!!!!!"
-			ws.send("****#{msg.data}")
-			puts msg.data
+			puts "Volunteer on message."
+			ws.send(msg.data)
 		end
 
 		ws.on(:close) do |event|
@@ -93,7 +80,6 @@ end
 
 get '/display' do
 
-
 	@items = Item.all
 	items_and_totals = images_per_item(@items)
 	total_items = total_images(items_and_totals)
@@ -103,16 +89,16 @@ get '/display' do
 	@array.each { |image| image[0] = '' if image[0] == ' ' }	
 
 	if Faye::WebSocket.websocket?(request.env)
-		ws = Faye::WebSocket.new(request.env)
+
+		ws = getSocket
 
 		ws.on(:open) do |event|
-			puts 'On Open ******'
+			puts 'DISPLAY: On Open'
 		end
 
 		ws.on(:message) do |msg|
-			puts "**********"
+			puts "DISPLAY received message"
 			ws.send(msg.data)
-			puts msg.data
 		end
 
 		ws.on(:close) do |event|
@@ -123,7 +109,6 @@ get '/display' do
 	else
 		erb :display
 	end
-	# erb :display
 end
 
 post '/display' do
