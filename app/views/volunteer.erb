@@ -14,7 +14,7 @@
 		<div id="new-item">
 			<form action='/display' id='auction-list' method='post'>
 			
-				<select name="title">
+				<select name="title" id="item">
 					<option class="options-list">Auction Item</option>
 				  <option class="options-list" value="rugby.png">Rugby Program (1 available)</option>
 				  <option value="cricket.png">Cricket Program (1 available)</option>
@@ -37,7 +37,9 @@
 			  </select>	
 					<input type='submit' id="submit" value='SUBMIT'>
 			</form>
-				
+			<ul id="messages">
+
+			</ul>			
 			<button type="submit" action="/volunteer-table" value="reselect" id="reselect">Reselect Table</button>
 		</div>
 	</div>
@@ -59,7 +61,7 @@
         if (option.value == value) {
           // The one being updated
           selected[value] = !selected[value];
-         }
+        }
         // One of the others
         option.selected = !!selected[option.value];
       }
