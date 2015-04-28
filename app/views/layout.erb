@@ -18,19 +18,21 @@
       $('#messages').append($('<li>').text(string));
     }
     var ws_uri = location.href.replace(/^http/, 'ws');
+    console.log(ws_uri);
+    // var ws_uri = 'http://localhost:9292/display';
     var ws = new WebSocket(ws_uri);
 
     ws.open = function() {
-      append_li('ws.open');
+      console.log('hi from the client');
     }
 
     ws.onmessage = function(msg) {
-      append_li(msg.data);
-      alert(msg.data)
+      // alert("client onmessage ------ ");
+      alert(msg.data);
     }
 
     ws.onclose = function() {
-      append_li('ws.onclose');
+      console.log('bye from the client');
     }
 
     var input = $('#submit')
@@ -40,6 +42,7 @@
       ws.send(msg);
       append_li(msg);
       input.val("");
+      alert(msg);
     });
   </script>
   </body>
