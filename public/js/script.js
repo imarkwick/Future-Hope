@@ -24,7 +24,6 @@ $(document).ready(function() {
     var msg = dropdown.val();
     ws.send(msg);
     append_li(msg);
-    input.val("");
   });
 
   // VOLUNTEER FORM SUBMISSION
@@ -34,17 +33,14 @@ $(document).ready(function() {
       ev.preventDefault();
       $.ajax({
         url: '/volunteer',
-        data: $(this).serialise(),
+        data: $(this).serialize(),
         dataType: 'html',
         success: function(data) {
-          console.log(html(data));
+          console.log(data);
         }
       });  
     });
   });
-
-
-
 });
 
 
