@@ -31,14 +31,20 @@ $(document).ready(function() {
   ws.open = function() {
     console.log('hi from the client');
   }
-
   ws.onmessage = function(msg) {
     alert('client msg: ' + msg.data);
   }
 
-  ws.onclose = function() {
-    console.log('bye from the client');
+  ws.ping = function (){
+    console.log("PING")
   }
+  ws.onclose = function() {
+    ws.send('Ping');
+    ws.open();
+  }
+
+
+
 
   var input = $('#submit')
   input.click(function() {

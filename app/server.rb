@@ -34,7 +34,7 @@ get '/volunteer-table' do
 end
 
 def getSocket
-	@@ws ||= Faye::WebSocket.new(env)
+	@@ws ||= Faye::WebSocket.new(request.env, nil, ping: 5)
 	@@ws
 end
 
@@ -55,6 +55,7 @@ get '/volunteer' do
 		ws = getSocket
 
 		ws.on(:open) do |event|
+			ws.send "Hello Client!"
 			puts 'Volunteer: On Open'
 		end
 
