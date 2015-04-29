@@ -33,7 +33,7 @@ get '/volunteer-table' do
 end
 
 def getSocket
-	@@ws ||= Faye::WebSocket.new(request.env)
+	@@ws ||= Faye::WebSocket.new(request.env, ping: 60)
 	@@ws
 end
 
@@ -46,9 +46,8 @@ get '/volunteer' do
 			@all_table_names = table_guestlist(@table)
 		end
 	end
-	# p request.env
 
-	if (Faye::WebSocket.websocket?(request.env))
+	if (Faye::WebSocket.websocket?(env))
 
 		puts "----"
 
@@ -88,7 +87,7 @@ get '/display' do
 	@array.delete(@array.last)
 	@array.each { |image| image[0] = '' if image[0] == ' ' }	
 
-	if Faye::WebSocket.websocket?(request.env)
+	if Faye::WebSocket.websocket?(env)
 
 		ws = getSocket
 
@@ -99,6 +98,8 @@ get '/display' do
 		ws.on(:message) do |msg|
 			puts "DISPLAY received message"
 			ws.send(msg.data)
+			@image = msg.data
+			puts 'display message is...' + msg.data
 		end
 
 		ws.on(:close) do |event|
