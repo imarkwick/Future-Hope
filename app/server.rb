@@ -37,25 +37,6 @@ def getSocket
 	@@ws
 end
 
-def start_connection
-	ws = Faye::WebSocket.new(request.env, ping: 60)
-
-	ws.on(:open) do |event|
-		puts 'Volunteer: On Open'
-	end
-
-	ws.on(:message) do |msg|
-		puts "Volunteer on message."
-		ws.send(msg.data)
-	end
-
-	ws.on(:close) do |event|
-		puts 'On Close'
-		start_connection
-		puts 'Re-starting Connection'
-	end
-end
-
 get '/volunteer' do
 	@number = session[:mytable]
 	@tables = Table.all
@@ -83,7 +64,6 @@ get '/volunteer' do
 
 		ws.on(:close) do |event|
 			puts 'On Close'
-			# start_connection
 		end
 
 		ws.rack_response
@@ -118,11 +98,12 @@ get '/display' do
 		ws.on(:message) do |msg|
 			puts "DISPLAY received message"
 			ws.send(msg.data)
+			@image = msg.data
+			puts 'display message is...' + msg.data
 		end
 
 		ws.on(:close) do |event|
 			puts 'On Close'
-			# start_connection
 		end
 
 		ws.rack_response

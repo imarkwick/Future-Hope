@@ -6,7 +6,6 @@ $(document).ready(function() {
 
   var ws_uri = location.href.replace(/^http/, 'ws');
   var ws = new WebSocket(ws_uri);
-  // var ws = Faye::WebSocket::Client.new(ws_uri, ping: 60)
   ws.open = function() {
     console.log('hi from the client');
   }
@@ -26,7 +25,33 @@ $(document).ready(function() {
     ws.send(msg);
     append_li(msg);
     input.val("");
-    alert('on click: ' + msg);
   });
-  
+
+  // VOLUNTEER FORM SUBMISSION
+
+  $(function() {
+    $('#auction-list').submit(function(ev) {
+      ev.preventDefault();
+      $.ajax({
+        url: '/volunteer',
+        data: $(this).serialise(),
+        dataType: 'html',
+        success: function(data) {
+          console.log(html(data));
+        }
+      });  
+    });
+  });
+
+
+
 });
+
+
+// STOP PAGE REFRESH ON VOLUNTEER P
+
+// form prevent default 
+
+// submission using ajax
+
+// serialise method for the form
