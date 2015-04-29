@@ -1,30 +1,32 @@
-// $(document).ready(function() {
-// 	var append_li = function(string) {
-// 		$('#messages').append($('<li>').text(string));
-// 	}
+$(document).ready(function() {
 
-// 	var ws_uri = location.href.replace(/^http/, 'ws');
-// 	var ws = new WebSocket(ws_uri);
+  var append_li = function(string) {
+    $('#messages').append($('<li>').text(string));
+  }
 
-// 	ws.open = function() {
-// 		append_li('ws.open');
-// 	}
+  var ws_uri = location.href.replace(/^http/, 'ws');
+  var ws = new WebSocket(ws_uri);
+  // var ws = Faye::WebSocket::Client.new(ws_uri, ping: 60)
+  ws.open = function() {
+    console.log('hi from the client');
+  }
 
-// 	ws.onmessage = function(msg) {
-// 		append_li('ws.onmessage: "' + msg.data + '" from server');
-// 	}
+  ws.onmessage = function(msg) {
+    alert('client msg: ' + msg.data);
+  }
 
-// 	ws.onclose = function() {
-// 		append_li('ws.onclose');
-// 	}
+  ws.onclose = function() {
+    console.log('bye from the client');
+  }
 
-// 	var input = $('#input')
-// 	input.change(function() {
-// 		var msg = input.val();
-// 		ws.send(msg);
-// 		append_li('"' + msg + '" to server');
-// 		input.val("");
-// 	});
-
-// 	console.log(input);
-// });
+  var input = $('#submit')
+  input.click(function() {
+    var dropdown = $('#item');
+    var msg = dropdown.val();
+    ws.send(msg);
+    append_li(msg);
+    input.val("");
+    alert('on click: ' + msg);
+  });
+  
+});

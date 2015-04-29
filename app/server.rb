@@ -33,8 +33,27 @@ get '/volunteer-table' do
 end
 
 def getSocket
-	@@ws ||= Faye::WebSocket.new(request.env)
+	@@ws ||= Faye::WebSocket.new(request.env, ping: 60)
 	@@ws
+end
+
+def start_connection
+	ws = Faye::WebSocket.new(request.env, ping: 60)
+
+	ws.on(:open) do |event|
+		puts 'Volunteer: On Open'
+	end
+
+	ws.on(:message) do |msg|
+		puts "Volunteer on message."
+		ws.send(msg.data)
+	end
+
+	ws.on(:close) do |event|
+		puts 'On Close'
+		start_connection
+		puts 'Re-starting Connection'
+	end
 end
 
 get '/volunteer' do
@@ -46,9 +65,8 @@ get '/volunteer' do
 			@all_table_names = table_guestlist(@table)
 		end
 	end
-	# p request.env
 
-	if (Faye::WebSocket.websocket?(request.env))
+	if (Faye::WebSocket.websocket?(env))
 
 		puts "----"
 
@@ -65,6 +83,7 @@ get '/volunteer' do
 
 		ws.on(:close) do |event|
 			puts 'On Close'
+			# start_connection
 		end
 
 		ws.rack_response
@@ -88,7 +107,7 @@ get '/display' do
 	@array.delete(@array.last)
 	@array.each { |image| image[0] = '' if image[0] == ' ' }	
 
-	if Faye::WebSocket.websocket?(request.env)
+	if Faye::WebSocket.websocket?(env)
 
 		ws = getSocket
 
@@ -103,6 +122,7 @@ get '/display' do
 
 		ws.on(:close) do |event|
 			puts 'On Close'
+			# start_connection
 		end
 
 		ws.rack_response
