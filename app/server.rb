@@ -33,7 +33,7 @@ get '/volunteer-table' do
 end
 
 def getSocket
-	@@ws ||= Faye::WebSocket.new(request.env, ping: 60)
+	@@ws ||= Faye::WebSocket.new(env)
 	@@ws
 end
 
