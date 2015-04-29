@@ -3,6 +3,7 @@ require 'data_mapper'
 require 'faye/websocket'
 
 Faye::WebSocket.load_adapter('thin')
+
 require_relative './lib/item'
 require_relative './lib/table'
 require_relative './helper_methods/helper'
@@ -118,8 +119,6 @@ post '/display' do
 	total = params['total']
 	names = params['names']
 	Item.create(title: title, total: total, names: names)
-	puts title
-	puts names
 	redirect to('/volunteer')
 end
 

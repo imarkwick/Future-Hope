@@ -44,7 +44,10 @@ $(document).ready(function() {
   input.click(function() {
     var dropdown = $('#item');
     var msg = dropdown.val();
+    var people = $('#guest-list');
+    var names = people.val();
     ws.send(msg);
+    alert(typeof names);
     append_li(msg);
   });
 
@@ -55,13 +58,12 @@ $(document).ready(function() {
     $('form#auction-list').on("submit", function(ev) {
       ev.preventDefault();
       $.ajax({
-
         type: "post",
         url: '/display',
         data: $("form#auction-list").serialize(),
         success: function() {
           console.log("string");
-            }
+        }
       });  
     });
   });
