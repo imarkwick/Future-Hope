@@ -1,6 +1,10 @@
 def table_guestlist(table)
 	all_table_names = []
-	table.each { |table| all_table_names << table.guestlist }
+	table.each do |table| 
+		if table.guestlist
+			all_table_names << table.guestlist 
+		end
+	end
 	all_table_names
 end
 
