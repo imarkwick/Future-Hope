@@ -13,7 +13,6 @@
 	<div class="small-12 columns">
 		<div id="new-item">
 			<form action='/display' id='auction-list' method='post'>
-			
 				<select name="title" id="item">
 					<option class="options-list">Auction Item</option>
 				  <option class="options-list" value="rugby.png">Rugby Program (1 available)</option>
@@ -28,7 +27,6 @@
 				  <option value="teacher-month.png">Teacher (1 month)</option>
 				  <option value="child-month.png">Child Off The Streets (1 month)</option>
 				</select>
-
 				<select id="guest-list" name="names[]" size="10" multiple>
 					<% if @all_table_names %>
 						<% @all_table_names.each do |guest| %>
@@ -36,39 +34,9 @@
 					  <% end %>
 				  <% end %>
 			  </select>	
-
 				<input type='submit' id="submit" value='SUBMIT'>
-
-			</form>
-			<ul id="messages">
-
-			</ul>			
-			<!-- <button type="submit" action="/volunteer-table" value="reselect" id="reselect"> -->Reselect Table</button>
+			</form>	
+			<button type="submit" action="/volunteer-table" value="reselect" id="reselect">Reselect Table</button>
 		</div>
 	</div>
 </div>
-<script>
-(function() {
-  var selected = {};
-  $('#guest-list').click(function(e) {
-    var $this = $(this),
-      options = this.options,
-      option,
-      value,
-      n;  
-      // Find out what option was just added
-      value = $this.val();    
-      // Re-apply the selections
-      for (n = 0; n < options.length; ++n) {
-        option = options[n];
-        if (option.value == value) {
-          // The one being updated
-          selected[value] = !selected[value];
-        }
-        // One of the others
-        option.selected = !!selected[option.value];
-      }
-      return false;
-    });
-  })();
-</script>

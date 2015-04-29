@@ -1,5 +1,27 @@
 $(document).ready(function() {
 
+  // MULTI SELECT FORM
+
+  var selected = {};
+  $('#guest-list').click(function(e) {
+    var $this = $(this),
+    options = this.options,
+    option,
+    value,
+    n;  
+    value = $this.val();    
+    for (n = 0; n < options.length; ++n) {
+      option = options[n];
+      if (option.value == value) {
+        selected[value] = !selected[value];
+      }
+      option.selected = !!selected[option.value];
+    }
+    return false;
+  });
+
+  // FAYE CLIENT WEBSOCKET
+
   var append_li = function(string) {
     $('#messages').append($('<li>').text(string));
   }
@@ -36,7 +58,6 @@ $(document).ready(function() {
 
         type: "post",
         url: '/display',
-        // dataType: {"hello from ajax form"},
         data: $("form#auction-list").serialize(),
         success: function() {
           console.log("string");
@@ -45,12 +66,3 @@ $(document).ready(function() {
     });
   });
 });
-
-
-// STOP PAGE REFRESH ON VOLUNTEER P
-
-// form prevent default 
-
-// submission using ajax
-
-// serialise method for the form
