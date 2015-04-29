@@ -6,7 +6,11 @@ end
 
 def images_per_item(items)
 	item_total = {}
-	items.each { |item| item_total[item.title] = (item.names).split(",").length }
+	items.each do |item|
+		if item.names 
+			item_total[item.title] = (item.names).split(",").length
+		end
+	end
 	item_total
 end
 

@@ -118,6 +118,8 @@ post '/display' do
 	total = params['total']
 	names = params['names']
 	Item.create(title: title, total: total, names: names)
+	puts title
+	puts names
 	redirect to('/volunteer')
 end
 

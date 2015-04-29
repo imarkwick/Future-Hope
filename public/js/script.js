@@ -29,15 +29,18 @@ $(document).ready(function() {
   // VOLUNTEER FORM SUBMISSION
 
   $(function() {
-    $('#auction-list').submit(function(ev) {
+
+    $('form#auction-list').on("submit", function(ev) {
       ev.preventDefault();
       $.ajax({
-        url: '/volunteer',
-        data: $(this).serialize(),
-        dataType: 'html',
-        success: function(data) {
-          console.log(data);
-        }
+
+        type: "post",
+        url: '/display',
+        // dataType: {"hello from ajax form"},
+        data: $("form#auction-list").serialize(),
+        success: function() {
+          console.log("string");
+            }
       });  
     });
   });
