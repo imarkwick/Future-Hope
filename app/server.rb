@@ -87,7 +87,9 @@ get '/display' do
 	@array.delete(@array.last)
 	@array.each { |image| image[0] = '' if image[0] == ' ' }	
 
-	if Faye::WebSocket.websocket?(env)
+	if (Faye::WebSocket.websocket?(env))
+
+		puts '******************'
 
 		ws = getSocket
 
@@ -98,7 +100,6 @@ get '/display' do
 		ws.on(:message) do |msg|
 			puts "DISPLAY received message"
 			ws.send(msg.data)
-			@image = msg.data
 			puts 'display message is...' + msg.data
 		end
 
